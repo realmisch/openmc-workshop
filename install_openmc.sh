@@ -23,7 +23,10 @@ cd ../
 FILE_NAME="xslib.tar.xz"
 wget https://anl.box.com/shared/static/uhbxlrx7hvxqw27psymfbhi7bx7s6u6a.xz -O $FILE_NAME
 FILE_SIZE=$(du -b $FILE_NAME | cut -f1) 
-tar -xJf $FILE_NAME --checkpoint=1000 --checkpoint-action=echo='%{}T (13GiB Total)'
+tar -xJf $FILE_NAME --checkpoint=1000 --checkpoint-action=echo='%{}T (13GiB Total)%{0}*' --checkpoint-action='exec=echo "\e[2A\e[K"'
 export OPENMC_CROSS_SECTIONS=$PWD/endfb-viii.0-hdf5/cross_sections.xml
-export OPENMC_CROSS_SECTIONS=$PWD/endfb-viii.0-hdf5/cross_sections.xml >> ~/.bashrc
+echo 'export OPENMC_CROSS_SECTIONS=$PWD/endfb-viii.0-hdf5/cross_sections.xml' >> ~/.bashrc
+rm -rf xslib.tar.xz
+export PATH="$PWD/openmc/release/bin:$PATH"
+echo 'export PATH="$PWD/openmc/release/bin:$PATH"' >> ~/.bashrc
 
