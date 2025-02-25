@@ -1,3 +1,10 @@
+###############################################################################
+#       OPENMC + ENDF-VIII.0 INSTALL SCRIPT
+#       Created by Alex Nellis
+#       Feb 24, 2025
+#       %Working with Ubuntu 24.04
+###############################################################################
+
 #Get OpenMC source code
 git clone --recurse-submodules https://github.com/openmc-dev/openmc.git
 cd openmc
